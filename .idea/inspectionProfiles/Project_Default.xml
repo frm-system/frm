@@ -1,0 +1,20 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0" is_locked="false">
+    <option name="myName" value="Project Default" />
+    <option name="myLocal" value="false" />
+    <inspection_tool class="JSValidateJSON" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <value>
+          <list size="5">
+            <item index="0" class="java.lang.String" itemvalue="INFO" />
+            <item index="1" class="java.lang.String" itemvalue="WARNING" />
+            <item index="2" class="java.lang.String" itemvalue="ERROR" />
+            <item index="3" class="java.lang.String" itemvalue="DEBUG" />
+            <item index="4" class="java.lang.String" itemvalue="storage.tests.self" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
