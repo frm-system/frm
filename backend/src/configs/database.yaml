@@ -1,0 +1,12 @@
+database:
+  hosts: localhost
+  name: fountain
+  test_name: fountain_test
+  w: 1     # Please see documentation of the Mongo
+  j: True  # Please see documentation of the Mongo
+
+redis:
+  host: localhost
+  port: 6379
+  db: 0
+  test_db: 1

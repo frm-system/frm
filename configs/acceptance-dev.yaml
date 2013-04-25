@@ -1,0 +1,6 @@
+extends:
+  base.yaml
+
+server: dv-eu-api.projectapollo2.com
+email:
+  domain: projectapollo2.com

@@ -1,0 +1,8 @@
+version: 0.0.1
+extends:
+  - logging.yaml
+  - user.yaml
+  - database.yaml
+debug: false
+test: false
+regions: __FIX_ME__

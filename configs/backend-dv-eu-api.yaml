@@ -1,0 +1,7 @@
+extends:
+  base.yaml
+region: EU
+stage: DV
+regions:
+   EU: test
+debug: true

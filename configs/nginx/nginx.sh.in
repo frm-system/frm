@@ -1,0 +1,40 @@
+#!/bin/bash
+nginx=/etc/init.d/nginx
+
+command=$1
+
+function start {
+echo "Starting..."
+$nginx start
+}
+
+function stop {
+echo "Stoping..."
+$nginx stop
+}
+
+function reload {
+echo "Reloading..."
+$nginx reload
+}
+
+
+case $command in
+start)
+  start
+  ;;
+stop)
+  stop
+  ;;
+reload)
+  reload
+  ;;
+restart)
+  stop
+  start
+  ;;
+*)
+  echo "Usage: $0 {start|stop|restart|reload}"
+  exit 1
+  ;;
+esac

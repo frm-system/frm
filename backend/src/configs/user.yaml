@@ -1,0 +1,5 @@
+user:
+  salt_rounds: 8
+  token_ttl: 3600 # 1 hour
+  token_key: 4697d3ec3e239a2404ea52c919d9f0e2 #  "".join([chr(random.randint(0,256)) for r in xrange(16)]).encode("hex")
+  hmac_key: 52a969cceb3053513e89524341bef71f

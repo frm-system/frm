@@ -1,0 +1,56 @@
+# logging configuration. For details please see http://docs.python.org/library/logging.config.html
+logging:
+  # syslog: True
+  version: 1
+  reply_size: 1024  # 0 means that reply body is not logged.
+  disable_existing_loggers: true
+  formatters:
+     simple:
+        format: '%(levelname)s %(message)s'
+     time_and_message:
+        format: '%(asctime)s|%(message)s'
+     time_and_message_pid:
+        format: '%(asctime)s[%(levelname)7s][%(process)5d/%(threadName)s]%(message)s'
+     message_only:
+        format: '%(message)s'
+
+  default_handler: &DEFAULT_HANDLER
+    level: DEBUG
+    class: logging.handlers.RotatingFileHandler
+    formatter: time_and_message_pid
+    backupCount: 1
+
+  default_handler_syslog: &DEFAULT_HANDLER_SYSLOG
+    level: DEBUG
+    class: utils.loghandlers.SysLogHandlerWithoutBOM
+    address: /dev/log
+    facility: 16 # local0
+
+  enable_debug: False
+
+  __loggers:
+    # logger,            level, filename,         formatter [, additional parameters]
+    failures:           [DEBUG, failures,      time_and_message_pid, {}]
+    api:                [INFO,  api,           time_and_message,     {}]
+    backend:            [DEBUG, backend,       time_and_message_pid, {}]
+
+  handlers:
+     console:
+       level: DEBUG
+       class: logging.StreamHandler
+       formatter: simple
+
+     failures_error_handler:
+       <<: *DEFAULT_HANDLER
+       level: WARNING
+       filename: __APPLICATION_PATH__/log/failures.log
+
+     sentry:
+       level: ERROR
+       class: raven.handlers.logging.SentryHandler
+       dsn: http://8c787e19981740cbba4d4e4cfce39526:cd11a6ef33a7463ea4e1d39b1071089d@sentry.projectapollo2.com:9000/2
+
+  loggers: {}
+
+sentry:
+  dsn: http://8c787e19981740cbba4d4e4cfce39526:cd11a6ef33a7463ea4e1d39b1071089d@sentry.projectapollo2.com:9000/2

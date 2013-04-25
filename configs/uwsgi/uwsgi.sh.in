@@ -1,0 +1,41 @@
+#!/bin/bash
+uwsgi=/usr/local/bin/uwsgi
+
+command=$1
+
+function start {
+echo "Starting..."
+$uwsgi --ini ${uwsgiconfig:configfile}
+}
+
+function stop {
+echo "Stoping..."
+$uwsgi --stop ${uwsgiconfig:pidfile}
+}
+
+function reload {
+echo "Reloading..."
+$uwsgi --reload ${uwsgiconfig:pidfile}
+}
+
+
+case $command in
+start)
+  start
+  ;;
+stop)
+  stop
+  ;;
+reload)
+  reload
+  ;;
+restart)
+  stop
+  sleep 2
+  start
+  ;;
+*)
+  echo "Usage: $0 {start|stop|restart|reload}"
+  exit 1
+  ;;
+esac

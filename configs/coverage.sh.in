@@ -1,0 +1,3 @@
+bin/coverage erase
+bin/coverage run --source="backend/src/" bin/backend_junit
+bin/coverage xml

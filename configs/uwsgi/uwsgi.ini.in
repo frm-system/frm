@@ -1,0 +1,13 @@
+[uwsgi]
+socket = ${uwsgiconfig:socket}
+chmod-socket = 666
+cheaper = ${uwsgiconfig:cheaper}
+master = true
+processes = ${uwsgiconfig:processes}
+# disable-logging = ${uwsgiconfig:disablelogging}
+module = ${uwsgiconfig:wsgiscript}
+# chdir & file
+pythonpath = ${buildout:bin-directory}
+user=fountain
+daemonize=${buildout:log-directory}/uwsgi.log
+pidfile=${uwsgiconfig:pidfile}
