@@ -18,3 +18,8 @@ def get_current_user():
     import getpass
     return getpass.getuser()
 
+def get_client_address(environ):
+    try:
+        return environ['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+    except KeyError:
+        return environ.get('REMOTE_ADDR', '')

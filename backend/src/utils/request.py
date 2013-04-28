@@ -1,6 +1,9 @@
 import functools
 import inspect
 from bottle import request, HTTPError
+import threading
+
+local_properties = threading.local()
 
 class ValidateError(Exception):
     def __init__(self, error):

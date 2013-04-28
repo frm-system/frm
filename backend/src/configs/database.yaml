@@ -1,7 +1,7 @@
 database:
   hosts: localhost
-  name: fountain
-  test_name: fountain_test
+  name: frm
+  test_name: frm_test
   w: 1     # Please see documentation of the Mongo
   j: True  # Please see documentation of the Mongo
 

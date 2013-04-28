@@ -13,24 +13,38 @@ initLogger("backend")
 
 application = bottle.Bottle()
 
+
 def default_error_handler(error):
-    res = {"message": error.body or error.message, }
-    if conf.debug and error.traceback:
-        res["traceback"] = error.traceback
+    res = {}
+    try:
+        res["message"] = error.body or error.message
+        if conf.debug and error.traceback:
+            res["traceback"] = error.traceback.split("\n")
+        if getattr(error, "additional_message", None):
+            res["additional_message"] = error.additional_message
 
-    if error.status_code == 405 and "Method not allowed" in error.body:
-        INFO("Method %s %s is not allowed" % (bottle.request.method, bottle.request.path))
-        if conf.debug:
-            allow = ["%s %s" % (r.method, r.rule) for r in application.routes]
-            DEBUG("List of allowed methods: %s" % "\n".join(allow))
-            res["allowed_methods"] = allow
+        if error.body and (error.status_code == 405 and "Method not allowed" in error.body or
+                                       error.status_code == 404 and error.body.startswith("Not found: ")):
+            INFO("Method %s %s is not allowed" % (bottle.request.method, bottle.request.path))
+            if conf.debug:
+                allow = ["%s %s" % (r.method, r.rule) for r in application.routes]
+                DEBUG("List of allowed methods: %s" % "\n".join(allow))
+                res["allowed_methods"] = allow
 
-    from bottle import response
-    response.content_type = 'application/json'
-    response.body = json.dumps(res)
-    return response
+        from bottle import request, response
+        response.content_type = 'application/json'
+        response.body = json.dumps(res, indent=4 if conf.debug else None)
+        RequestLogginingPlugin.log(request, response, "*")
+        return response
+    except Exception, e:
+        ERROR("Unhandled exception during generating error for error '%s' and %s: %s" % (error, res, e))
+        import traceback
+        ex = traceback.format_exc()
+        WARNING(ex)
+        raise
 
 application.default_error_handler = default_error_handler
+
 
 def find_last_created_file():
     import os
@@ -45,8 +59,9 @@ def find_last_created_file():
     d = datetime.fromtimestamp(t)
     return d.strftime('%Y-%m-%d %H:%M:%S')
 
+
 class OtherApi(Api):
-    prefix  = ""
+    prefix = ""
 
     @get("version/", no_version=True, no_prefix=True)
     def get_version(self):
@@ -71,8 +86,8 @@ class OtherApi(Api):
         return {"regions": conf.regions.keys()}
 
 def init():
-    add_routes(application, UserApi())
-    add_routes(application, OtherApi())
+    for api in [UserApi(), OtherApi()]:
+        add_routes(application, api)
     application.install(RequestLogginingPlugin())
 
 init()

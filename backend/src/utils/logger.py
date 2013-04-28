@@ -6,6 +6,16 @@ import logging
 _logging_levels = ["debug", "info", "warning", "error", "critical"]
 _logger = None
 
+
+def prepare_parameters(params):
+    exception_words = [
+        # 'password',
+    ]
+    mask_symbols = '*' * 8
+    result = ["(%s=%s)" % (k, v if not k in exception_words else mask_symbols)
+              for k, v in params.iteritems()]
+    return ",".join(result)
+
 def initLogger(name, force = False):
     global _logger
     if _logger is not None and not force:

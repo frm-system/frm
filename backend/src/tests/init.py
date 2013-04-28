@@ -15,13 +15,10 @@ class BaseTestCaseWithoutDB(unittest.TestCase):
 
 class BaseTestCase(unittest.TestCase):
     def setUp(self):
-        from utils.dbconnection import clear_mongo, clear_redis, mongo_ensure_indexes
+        from utils.dbconnection import clear_mongo, mongo_ensure_indexes
         clear_mongo()
         from user import User
-        from camera import Camera
-        from preset import Preset
-        mongo_ensure_indexes(User, Camera, Preset)
-        clear_redis()
+        mongo_ensure_indexes(User)
         BaseTestCase.load_fixtures()
 
 
