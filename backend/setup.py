@@ -15,7 +15,8 @@ install_requires=["bottle",
                   "coverage",
                   "py-bcrypt",
                   "pycrypto",
-                  "webtest"
+                  "webtest",
+                  "raven"
                ]
 install_requires.extend(extra_packages)
 
