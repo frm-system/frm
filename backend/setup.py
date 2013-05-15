@@ -14,7 +14,8 @@ install_requires=["bottle",
                   "unittest-xml-reporting",
                   "coverage",
                   "py-bcrypt",
-                  "pycrypto"
+                  "pycrypto",
+                  "webtest"
                ]
 install_requires.extend(extra_packages)
 
