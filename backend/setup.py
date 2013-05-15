@@ -13,7 +13,6 @@ install_requires=["bottle",
                   "redis",
                   "unittest-xml-reporting",
                   "coverage",
-                  "webtest",
                   "py-bcrypt",
                   "pycrypto"
                ]
@@ -24,13 +23,13 @@ def read(fname):
 
 packages = find_packages("src")
 setup(name="fountain_backend",
-      version="0.0.1", 
+      version="0.0.1",
       author="ASD Technologies",
       author_email="admin@asdco.ru",
       description="API backend server for the fountain project",
       license = "Private",
       url = "https://bitbucket.org/asdtech/fountain",
-      packages = packages, 
+      packages = packages,
       package_dir = {'':'src'},
       package_data = {
         '': ['*.sh', '*.ini', '*.pem', '*.txt'],
