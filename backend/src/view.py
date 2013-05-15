@@ -4,6 +4,7 @@ import bottle
 import json
 
 from userapi import UserApi
+from contactapi import ContactApi
 from utils.logger import initLogger
 from utils.request import add_routes, get, Api
 from plugins.bottle_sentry import SentryPlugin
@@ -85,8 +86,9 @@ class OtherApi(Api):
         """
         return {"regions": conf.regions.keys()}
 
+
 def init():
-    for api in [UserApi(), OtherApi()]:
+    for api in [UserApi(), OtherApi(), ContactApi()]:
         add_routes(application, api)
     application.install(RequestLogginingPlugin())
 

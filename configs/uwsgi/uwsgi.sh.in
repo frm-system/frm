@@ -1,11 +1,11 @@
 #!/bin/bash
-uwsgi=/usr/local/bin/uwsgi
+uwsgi=/usr/bin/uwsgi
 
 command=$1
 
 function start {
 echo "Starting..."
-$uwsgi --ini ${uwsgiconfig:configfile}
+$uwsgi py_bcrypt --ini ${uwsgiconfig:configfile}
 }
 
 function stop {

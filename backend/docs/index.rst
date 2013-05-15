@@ -1,9 +1,9 @@
-.. Fontain documentation master file, created by
+.. FRM documentation master file, created by
    sphinx-quickstart on Sat Dec 29 18:54:18 2012.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Fontain's API documentation!
+Welcome to FRM's API documentation!
 =======================================
 
 
@@ -13,9 +13,9 @@ Here will be table with short description
 
 .. currentmodule:: view
 
-Fountain API Details
+FRM API Details
 **************************
-Description of Fountain API.
+Description of FRM API.
 
 .. default-domain:: pyapi
 .. autoapi:: view

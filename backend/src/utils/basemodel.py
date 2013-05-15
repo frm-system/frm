@@ -16,6 +16,7 @@ class Model(object):
             if not k.startswith("_") and hasattr(obj, k):
                 setattr(obj, k, v)
         obj.id = d["_id"].binary
+        obj._id = d["_id"]
         if cls.default_values:
             for k,v in cls.default_values.iteritems():
                 if k not in d:

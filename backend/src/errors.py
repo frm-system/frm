@@ -35,26 +35,8 @@ class Conflict(BadRequest):
 class UserAlreadyExists(Conflict):
     message = "User already exists"
 
+class UserDoesNotFound(Conflict):
+    message = "User does not found"
+
 class UserUnauthorized(Unauthorized):
     message = "incorrect email/password"
-
-
-# camera specific errors
-class CameraAlreadyExists(Conflict):
-    message = "Camera already exists"
-
-class CameraNotFound(NotFound):
-    message = "Camera not found"
-
-class CameraShouldBeStopped(Conflict):
-    message = "For this operation camera should be stopped"
-
-# preset specific errors
-class PresetAlreadyExists(Conflict):
-    message = "Preset already exist"
-
-class PresetDoesntExist(Conflict):
-    message = "Preset doesn't exist"
-
-class PresetIncorrectFormat(Conflict):
-    message = "Incorrect format"

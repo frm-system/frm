@@ -14,7 +14,7 @@ dist/
 !.gitignore
 .installed.cfg
 etc/
-._*
+.*
 backend/docs/_build/
 backend/docs/Makefile
 backend/docs/doctrees/
@@ -23,3 +23,4 @@ backend/docs/make.bat
 configs/nginx/nginx.conf
 configs/supervisord/supervisord.conf
 configs/uwsgi/uwsgi.ini
+configs/redis/redis.conf

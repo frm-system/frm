@@ -21,7 +21,7 @@
       <root url="file://$PROJECT_DIR$/buildout/eggs/waitress-0.8.2-py2.7.egg" />
       <root url="file://$PROJECT_DIR$/buildout/eggs/WebOb-1.2.3-py2.7.egg" />
       <root url="file://$PROJECT_DIR$/buildout/eggs/six-1.3.0-py2.7.egg" />
-      <root url="jar://$PROJECT_DIR$/buildout/eggs/distribute-0.6.36-py2.7.egg!/" />
+      <root url="jar://$PROJECT_DIR$/../fountain/buildout/eggs/distribute-0.6.36-py2.7.egg!/" />
     </CLASSES>
     <SOURCES />
   </library>

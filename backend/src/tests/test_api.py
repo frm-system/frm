@@ -34,6 +34,14 @@ class TestAPI(BaseAPITestCase):
     def test_version(self):
         self.get('/version/', {}, auth_required=False)
 
+    def test_contact(self):
+        password = "testpassword"
+        self.post('/0/user/', {"password": password, "display_name": self.display_name, "email": self.email}, auth_required=False)
+        self.auth()
+        contact_name = "testName"
+        contact_surname = "testSurname"
+        self.post("/0/contact/", {"name":contact_name, "surname":contact_surname})
+
 
 if __name__ == '__main__':
     unittest.main()
