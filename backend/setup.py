@@ -13,6 +13,7 @@ install_requires=["bottle",
                   "redis",
                   "unittest-xml-reporting",
                   "coverage",
+                  "webtest",
                   "py-bcrypt",
                   "pycrypto"
                ]
