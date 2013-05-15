@@ -2,8 +2,8 @@
 
 import sys
 sys.path[0:0] = [
-  '/home/olaputin/frm/fountain/buildout/eggs/distribute-0.6.36-py2.7.egg',
-  '/home/olaputin/frm/fountain/buildout/eggs/zc.buildout-2.1.0-py2.7.egg',
+  '/home/olaputin/frm/frm/buildout/eggs/zc.buildout-2.1.0-py2.7.egg',
+  '/home/olaputin/frm/frm/buildout/eggs/distribute-0.6.40-py2.7.egg',
   ]
 
 import zc.buildout.buildout

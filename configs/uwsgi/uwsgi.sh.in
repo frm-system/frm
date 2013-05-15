@@ -5,7 +5,7 @@ command=$1
 
 function start {
 echo "Starting..."
-$uwsgi py_bcrypt --ini ${uwsgiconfig:configfile}
+$uwsgi --autoload --ini ${uwsgiconfig:configfile}
 }
 
 function stop {
